@@ -1,6 +1,4 @@
-
 name: Maven Automated Testing
-
 
 on:
   push:
@@ -8,7 +6,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -24,6 +21,3 @@ jobs:
 
       - name: Build and Test with Maven
         run: mvn --batch-mode clean test
-
-      - name: Test
-        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
