@@ -42,7 +42,7 @@ public class Message {
 //Utilized by hash
 Message(String fixedID, int messageNunber, String recipient, String text){
 this.messageID=fixedID;
-this.messageNumber = messageNumber;
+this.messageNumber =messageNumber;
 this.recipient=recipient;
 this.text=text;
 this.hash=createMessageHash();
@@ -104,7 +104,7 @@ public static String printMessage(){
     StringBuilder sb=new StringBuilder();
     for (Message m :sentMessages){
         sb.append("Message ID:").append(m.messageID)
-        .append("\nMessage Hash: ").append(m.hash)
+        .append("\nMessage Hash: ").append(m.hash);
            
     }
 }
