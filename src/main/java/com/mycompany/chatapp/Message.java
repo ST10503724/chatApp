@@ -68,5 +68,45 @@ return "Cell phone number successfully captured.";
 }
 return "cell phone number is incorrectly formatted or does not contain"+ "an international code. Please correct the number and try again";
 }
+public static String checkMessageLength(String msg){
+if (msg.length()<=250){
+    return "Message ready to send";
+}
+return " Message exceeded 250 characters by"+ (msg.length()-250)+ ";please reduce the size.";
+}
+//Hash 
+
+public String createMessageHash(){
+    String[] words=text.trim().split("\\s+");
+    String first=words[0].replaceAll("[^A-Za-z0-9]", "");
+    String last = words[words.length-1].replaceAll("[^A-Za-z0-9]","");
+    return(messageID.substring(0, 2)+":" + messageNumber +":"+first +last).toUpperCase(); 
+}
+//Discard & store
+//option: 1= send, 2=disregard 3= store 
+public String sentMessage(int choice){
+    switch(choice){
+        case 1: 
+            totalSent++;
+            sentMessage.add(this);
+            return "Message successfully sent.";
+        case 2:
+            return"Press 0 to delete the message.";
+        case 3: 
+            storeMessage();
+            return "Message successfully";
+        default:
+            return " invalid option";
+            
+    }
+}
+public static String printMessage(){
+    StringBuilder sb=new StringBuilder();
+    for (Message m :sentMessages){
+        sb.append("Message ID:").append(m.messageID)
+        .append("\nMessage Hash: ").append(m.hash)
+           
+    }
+}
 
 }
