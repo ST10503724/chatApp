@@ -1,3 +1,17 @@
+# Add this before the step that runs 'mvn' (e.g., before 'Run mvn package' or similar)
+- name: Set up JDK
+  uses: actions/setup-java@v4
+  with:
+    distribution: 'temurin'      # or 'zulu', 'microsoft', etc.
+    java-version: '26'          # match the <release> in your pom.xml
+    cache: 'maven'              # optional: caches ~/.m2 for faster builds
+
+- name: Verify Java
+  run: |
+    java -XshowSettings:properties -version
+    javac -version
+    mvn -v
+
 name: Maven Automated Testing
 
 on:
