@@ -22,7 +22,7 @@ public class ChatApp {
         String username = input.nextLine();
         
         //This session is for password 
-        System.out.print("Enter paswoed:");
+        System.out.print("Enter pasword:");
         String password = input.nextLine();
         
        //This section is for the cellphone number 
@@ -44,7 +44,7 @@ public class ChatApp {
            //Password re-enter 
           System.out.print("Enter Password");
           String loginPassword =input.nextLine();
-          Boolean isLoggedIn= user.loginUsername(loginUsername, loginPassword);
+          Boolean isLoggedIn= user.loginUser(loginUsername, loginPassword);
           
           //Enter First Name 
           System.out.print("Enter Password");
@@ -61,4 +61,11 @@ public class ChatApp {
        }
        
     }
+    
+
 }
+
+
+
+
+

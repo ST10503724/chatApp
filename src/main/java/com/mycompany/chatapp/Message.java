@@ -21,7 +21,24 @@ import java.util.List;
 import java.util.Random;
 
 public class Message {
-    
+   public static final String SENT="Sent";
+   public static final String STORED="Stored";
+   public static final String DISREGARDED="Disregard";
+   public static final String STORE_FILE="storeMessages.json";
+   
+   //Arrays 
+   private static final ArrayList<String> sentMessage= new ArrayList<>();
+   private static final ArrayList<String> disregardedMessages= new ArrayList<>();
+   private static final ArrayList<String> storedMessage = new ArrayList<>();
+   private static final ArrayList<String> messageHashes= new ArrayList<>();
+   private static final ArrayList<String> messageIDs= new ArrayList<>();
+   
+   //Parallel lists used for searching 
+   private static final ArrayList<String> allRecipients= new ArrayList<>();
+   private static final ArrayList<String> allMessages= new ArrayList<>();
+   private static final ArrayList<String> allFlags= new ArrayList<>();
+   private static final ArrayList<String> allSender= new ArrayList<>();
+   
 
 //Ignore static fields 
     private static int totalSent =0;

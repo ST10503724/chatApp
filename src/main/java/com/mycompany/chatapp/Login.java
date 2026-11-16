@@ -6,13 +6,14 @@ package com.mycompany.chatapp;
 
 /**
  *
- * @ST10503724
+ * @auther ST10503724
  */
 public class Login {
 
-private String username;
-private String password; 
-private String phoneNumber;
+private final String username;
+private final String password; 
+private final   String phoneNumber;
+private boolean isLoggedIn;
 
 //User details
 public Login(String username,String password, String phoneNumber){
@@ -30,7 +31,7 @@ public boolean checkUserName(){
 }
 
 //Password restriction complexity 
-public boolean passwordComplexity(){
+public boolean checkpasswordComplexity(){
 return password.length()>= 8&&
         password.matches(".*[A-Z].*")&&
         password.matches(".*\\d.*")&&
@@ -44,9 +45,9 @@ public boolean checkphoneNumber(){
 //Registration Unsuccessful 
 public String registerUser(){
     if(!checkUserName()){
-      return"Incorrect Username format, Please ensure it conintins an underscore and is no more than five character in length";
+      return"Incorrect Username format, Please ensure it contains an underscore and is no more than five character in length";
     }
-    if (!passwordComplexity()){
+    if (!checkpasswordComplexity()){
        return "Incorrect password format: please ensure that the password contains at least eight characters, a capital letter, a number, and special character.";
     }
     if (!checkphoneNumber()){
@@ -60,4 +61,5 @@ public boolean loginUser(String inputUsername,String inputPassword){
 }
 public String returnLoginStatus(String firstName,String surname,boolean isloggedIn){
     return isLoggedIn? "Welcom" + firstName + "," + surname + "it is great to see you again" : "username or password incorrect, Please try again ";}
+
 }
