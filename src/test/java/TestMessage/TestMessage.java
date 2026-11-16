@@ -82,6 +82,8 @@ public class TestMessage {
      @Test 
      void recipientIncorrectlyFormatted(){
      assertEquals("Cell phone number is incorrectly formatted or does not contain an international code."+"Please correct the number and try again.",part2Msg2().checkRecipientCell());
+     part2Msg2().checkRecipientCell();
+     
      }
      
     @Test 
@@ -90,8 +92,16 @@ public class TestMessage {
     }
     
     @Test
-    void messageHashesLoop(){}
-    Message
+    void messageHashesLoop(){
+    Message[]message={part2Msg1(),part2Msg2()};
+    String[]expected ={"00:0:HITONIGHT","HIPAYMENT"};
+    for(int i=0; i< messages.length;i++){
+    assertEquals(expected[i],message[i].createMessageHash());
+    }
+    
+    }
+    @Test
+    
     
 }
     
