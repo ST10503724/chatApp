@@ -24,7 +24,7 @@ public class TestMessage {
     
     //Part 2 test data 
     private Message part2Msg1(){
-    return new Message("0012345678",0, SENDER, "+27718693002", "Hi Mike,can you join us for dinner tonight?");
+    return new Message ("0012345678",0, SENDER, "+27718693002", "Hi Mike,can you join us for dinner tonight?");
     }
     
     private Message part2Msg2(){
@@ -101,8 +101,25 @@ public class TestMessage {
     
     }
     @Test
-    
-    
+    void messageIDIsCreated(){
+    Message generated= new Message(SENDER, "+27718693002","Hello there");
+    assertTrue(generated.checkMessageID());
+    assertEquals(10,generated.getMessageID().length());
+    assertEquals("Message ID generated: "+ 
+            generated.getMessageID());
+    }
+    @Test
+    void sendMessageOptions(){
+        assertEquals("Message successfully sent.",
+                part2Msg1().sentMessage(1));
+         assertEquals("Message successfully sent.",
+                part2Msg1().sentMessage(2));
+          assertEquals("Message successfully sent.",
+                part2Msg1().sentMessage(3));
+        
+        
+        
+    }
 }
     
 
