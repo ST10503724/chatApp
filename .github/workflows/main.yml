@@ -1,0 +1,37 @@
+# Add this before the step that runs 'mvn' (e.g., before 'Run mvn package' or similar)
+- name: Set up JDK
+  uses: actions/setup-java@v4
+  with:
+    distribution: 'temurin'      # or 'zulu', 'microsoft', etc.
+    java-version: '26'          # match the <release> in your pom.xml
+    cache: 'maven'              # optional: caches ~/.m2 for faster builds
+
+- name: Verify Java
+  run: |
+    java -XshowSettings:properties -version
+    javac -version
+    mvn -v
+
+name: Maven Automated Testing
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 22
+        uses: actions/setup-java@v4
+        with:
+          java-version: '22'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Build and Test with Maven
+        run: mvn --batch-mode clean test
