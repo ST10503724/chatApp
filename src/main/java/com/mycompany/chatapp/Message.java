@@ -2,8 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
- 
-package com.mycompany.chatapp;
 
 /**
  *
@@ -23,16 +21,21 @@ import java.util.List;
 import java.util.Random;
 
 public class Message {
+    
+
 //Ignore static fields 
     private static int totalSent =0;
     private static final List <Message> sentMessage = new ArrayList<>();
     private static String storageFile = "message.json";
     
     private final String messageID;
-    private final int messageNumber;
+    private final int messageHash;
     private final String recipient;
     private final String text;
     private final String hash;
+    private final String flag = null;
+    
+    //
     
     //Random ten digit ID
     public Message(int messageNumber ,String recipient, String text){
@@ -40,13 +43,23 @@ public class Message {
     
 }
 //Utilized by hash
-Message(String fixedID, int messageNunber, String recipient, String text){
+public Message(String fixedID, int messageNunber, String recipient, String text){
 this.messageID=fixedID;
-this.messageNumber =messageNumber;
+this.messageHash =  messageHash;
 this.recipient=recipient;
+this.flag= flag;
 this.text=text;
 this.hash=createMessageHash();
  }
+
+public String getMessageId(){return messageID;}
+//public String getMessageHash(){return messageHash;}
+public String getRecipient(){return recipient;}
+public String getText(){return text;}
+public String getFlag(){return flag;}
+}
+}
+
 private static String generateID(){
     Random r = new Random();
     StringBuilder sb= new StringBuilder();
@@ -93,20 +106,19 @@ public String sentMessage(int choice){
         case 2:
             return"Press 0 to delete the message.";
         case 3: 
-            storeMessage();
+           // storeMessages();
             return "Message successfully";
         default:
             return " invalid option";
             
     }
 }
-public static String printMessage(){
+public static void printMessage(){
     StringBuilder sb=new StringBuilder();
-    for (Message m :sentMessages){
+    for (Message m :sentMessage){
         sb.append("Message ID:").append(m.messageID)
         .append("\nMessage Hash: ").append(m.hash);
-           
-    }
+             
 }
 
-}
+
